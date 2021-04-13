@@ -1,0 +1,69 @@
+﻿@model Baseline.Models.User
+@{
+
+    Layout = "_Layout";
+    ViewBag.Title = "Edit Profile";
+
+}
+
+
+<br />
+<br />
+<br />
+
+<h2>Register</h2>
+<form asp-controller="Home" asp-action="UpdateProfile">
+    <input type="hidden" value="@Model.UserId" name="UserId" />
+
+    <div class="form-group col-sm-8">
+        <label for="text">FirstName: </label>
+        <input asp-for="FirstName" class="form-control" type="text" name="FirstName" placeholder="FirstName" required />
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="text">LastName: </label>
+        <input asp-for="LastName" class="form-control" type="text" name="LastName" placeholder="LastName" required />
+    </div>
+
+    <div class="form-group col-sm-8">
+        <label for="email">Email: </label>
+        <input asp-for="EmailAddress" class="form-control" type="email" name="EmailAddress" placeholder="EmailAddress" required />
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="password">Password: </label>
+        <input asp-for="Password" class="form-control" type="password" name="Password" placeholder="Password" required />
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="text">Country: </label>
+        <input asp-for="Country" class="form-control" type="text" name="Country" placeholder="Country" required />
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="text">Postal Code: </label>
+        <input asp-for="PostalCode" class="form-control" type="text" name="PostalCode" placeholder="PostalCode" required />
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="text">Address: </label>
+        <input asp-for="Address" class="form-control" type="text" name="Address" placeholder="Address" required />
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="text">City: </label>
+        <input asp-for="City" class="form-control" type="text" name="City" placeholder="City" required />
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="Date">Date of Birth: </label>
+        <input asp-for="DateOfBirth" class="form-control" type="date" name="DateOfBirth" placeholder="DateOfBirth" required />
+    </div>
+    <div class="form-group col-sm-8">
+        <label for="Role">Role: </label>
+        <select class="form-control" name="Role">
+            <option value="1">General User</option>
+            <option value="2">Admin</option>
+        </select>
+    </div>
+
+    <br />
+    <br />
+    <div class="col-sm-8">
+        <button class="btn btn-large btn-success" type="submit">Update</button>
+    </div>
+
+</form>

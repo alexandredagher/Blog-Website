@@ -1,0 +1,66 @@
+﻿@model Baseline.Models.User
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Rigister";
+}
+
+<br />
+<br />
+<br />
+
+<div class="container">
+    <form asp-controller="Home" asp-action="RegisterUser" method="post">
+        <input type="hidden" asp-for="RoleId" name="RoleId" value="2" />
+
+        <div class="form-group col-sm-8">
+            <label for="text">FirstName: </label>
+            <input asp-for="FirstName" class="form-control" type="text" name="FirstName" placeholder="First Name" required />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="text">LastName: </label>
+            <input asp-for="LastName" class="form-control" type="text" name="LastName" placeholder="Last Name" required />
+        </div>
+
+        <div class="form-group col-sm-8">
+            <label for="email">Email: </label>
+            <input asp-for="EmailAddress" class="form-control" type="email" name="EmailAddress" placeholder="Email Address" required />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="password">Password: </label>
+            <input asp-for="Password" class="form-control" type="password" name="Password" placeholder="Password" required />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="text">Country: </label>
+            <input asp-for="Country" class="form-control" type="text" name="Country" placeholder="Country" required />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="text">Postal Code: </label>
+            <input asp-for="PostalCode" class="form-control" type="text" name="PostalCode" placeholder="Postal Code" required />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="text">Address: </label>
+            <input asp-for="Address" class="form-control" type="text" name="Address" placeholder="Address" required />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="text">City: </label>
+            <input asp-for="City" class="form-control" type="text" name="City" placeholder="City" required />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="Date">Date of Birth: </label>
+            <input asp-for="DateOfBirth" class="form-control" />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="Role">Role: </label>
+            <select class="form-control" name="Role">
+                <option value=1>General User</option>
+                <option value=2>Admin</option>
+            </select>
+        </div>
+
+
+        <div class="col-sm-8">
+            <button type="submit" class="btn btn-large btn-success">Register</button>
+        </div>
+
+    </form>
+</div>

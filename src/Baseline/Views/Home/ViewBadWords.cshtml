@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Baseline.Models.BadWord>
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "View BadWords";
+}
+
+<br />
+<br />
+<br />
+
+<div class="container">
+    <form asp-controller="Home" asp-action="AddBadWordToDatabase">
+        <fieldset>
+            <legend>Add Bad Word</legend>
+            <input type="text" name="badword" />
+            <input type="submit" value="Add" />
+        </fieldset>
+    </form>
+
+    <br />
+    <h3>List of Bad Words:</h3>
+    <br />
+
+    <div class="row">
+       
+            @if (Model == null || Model.Count() == 0)
+            {
+                <p>No bad words here...</p>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+
+                    <div style="width: auto; display: block; border: 1px solid DarkGrey; margin: 10px 0px 10px 0px; padding: 5px 20px 0px 20px; border-radius: 10px;">
+
+                        <h4>
+                          <b>@item.Word </b>
+                        </h4>
+
+                            <div align="right">
+                                <a asp-controller="Home" asp-action="DeleteBadWord" asp-route-id="@item.BadWordId" onclick="alert('confirm to delete?')" >Delete</a>
+                            </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>

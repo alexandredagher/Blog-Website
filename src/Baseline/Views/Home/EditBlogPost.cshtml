@@ -1,0 +1,43 @@
+﻿@model Baseline.Models.BlogPost
+@using Microsoft.AspNetCore.Http
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Edit Blog";
+}
+
+<br />
+<br />
+<br />
+
+<div class="container">
+    <form asp-controller="Home" asp-action="EditBlog" method="post" class="col s12">
+        <input type="hidden" value="@Model.BlogPostId" name="BlogPostId" />
+
+        <div class="form-group col-sm-8">
+            <label for="text">Title: </label>
+            <input asp-for="Title" class="form-control" type="text" placeholder="Title" />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="text">Short Description: </label>
+            <input class="form-control" asp-for="ShortDescription" type="text" placeholder="Short Description" />
+        </div>
+
+        <div class="form-group col-sm-8">
+            <label for="text">Posts: </label>
+            <textarea asp-for="Content" class="form-control" typeof="text" data-length="5000"></textarea>
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="date">Posted: </label>
+            <input class="form-control" asp-for="Posted" typeof="date" />
+        </div>
+
+
+        <div class="col-sm-8">
+            <button type="submit" class="btn btn-success col-sm-12">Submit</button>
+        </div>
+    </form>
+    <br /><br />
+
+
+    
+</div>

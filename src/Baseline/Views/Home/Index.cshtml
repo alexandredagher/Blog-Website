@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Baseline.Models.BlogPost>
+@using Microsoft.AspNetCore.Http;
+@using Baseline.Models;
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home Page";
+    var user = (User)ViewData["user"];
+}
+
+<br />
+<br />
+<br />
+
+    @if (user != null)
+    {
+        
+            <a asp-controller="Home" asp-action="EditProfile" asp-route-id="@user.UserId">Edit Profile</a>
+            
+        if (user.RoleId == 2)
+        {
+          
+                <a asp-controller="Home" class="pull-right" asp-action="ViewBadWords">View BadWords</a>
+        
+         }
+    }
+
+    @{
+        <h1>Post Title</h1>
+        @if (Model == null || Model.Count() == 0)
+        {
+            <p>No posts here...</p>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div style="width: auto; display: block; border: 1px solid DarkGrey; margin: 10px 0px 10px 0px; padding: 0px 20px 5px 20px; border-radius: 10px;">
+                    <h3>
+
+                        <a asp-controller="Home" asp-action="DisplayFullBlogPost" asp-route-id="@item.BlogPostId">@item.Title</a>
+
+                        @if (Context.Session.GetString("UserId") != null && Context.Session.GetInt32("RoleId") == 2)
+                        {
+                                <a style="font-size:12px;" asp-controller="Home" asp-action="EditBlogPost" asp-route-id="@item.BlogPostId">( Edit Post |</a>
+                                <a style="font-size:12px;" asp-controller="Home" asp-action="DeleteBlogPost" onclick="return confirm('Are you sure to delete?');" asp-route-id="@item.BlogPostId">Delete Post)</a>
+                     
+                        }
+                    </h3>
+                    <p>@item.Content.Substring(0, Math.Min(@item.Content.Length, 100)) ...</p>
+                    <p>Posted on: @item.Posted</p>
+                </div>
+            }
+        }
+    }

@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Http
+@model Baseline.Models.BlogPost
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Add Blog";
+}
+
+<br />
+<br />
+<br />
+<br />
+
+<script>
+    function validation() {
+        if (document.getElementById('Title').value == "") {
+            alert('Please enter a Title');
+            document.getElementById('Title').style.borderColor = "red";
+            return false;
+        }
+        if (document.getElementById('ShortDescription').value == "") {
+            alert('Please enter a ShortDescription');
+            document.getElementById('ShortDescription').style.borderColor = "red";
+            return false;
+        }
+        if (document.getElementById('Content').value == "") {
+            alert('Please enter a Content');
+            document.getElementById('Content').style.borderColor = "red";
+            return false;
+        }
+        if (document.getElementById('Posted').value == "") {
+            alert('Please enter a Posted Date');
+            document.getElementById('Posted').style.borderColor = "red";
+            return false;
+        }
+    }
+</script>
+
+
+<div class="container">
+    <form asp-controller="Home" asp-action="AddBlog" method="post" onsubmit="return validation()">
+        <div class="form-group col-sm-8">
+            <label for="text">Title: </label>
+            <input class="form-control" asp-for="Title" type="text" placeholder="Title" />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="text">Short Description: </label>
+            <input class="form-control" asp-for="ShortDescription" type="text" placeholder="Short Description" />
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="text">Posts: </label>
+            <textarea class="form-control" asp-for="Content" typeof="text" data-length="5000"></textarea>
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="date">Posted: </label>
+            <input class="form-control" asp-for="Posted" typeof="date" />
+        </div>
+
+        <div class="col-sm-8">
+            <button type="submit" class="btn btn-success col-sm-8">Submit</button>
+        </div>
+    </form>
+</div>
